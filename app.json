@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "portfolio-app",
-    "slug": "portfolio-app",
+    "name": "Leandro Moreira · Portfólio",
+    "slug": "react-native-portfolio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0A0B0F",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -19,7 +19,19 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "name": "Leandro Moreira · Portfólio",
+      "shortName": "Portfólio",
+      "description": "Portfólio mobile de Leandro Moreira em React Native + Expo: projetos no ar, filtros por stack e skills.",
+      "backgroundColor": "#0A0B0F",
+      "themeColor": "#0A0B0F"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "backgroundColor": "#0A0B0F",
+    "experiments": {
+      "baseUrl": "/react-native-portfolio"
     }
   }
 }
