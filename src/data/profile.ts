@@ -31,4 +31,4 @@ export const links: ProfileLink[] = [
   },
 ];
 
-export const sourceUrl = "https://github.com/leandromlmoreira/react-native-portfolio";
+export const sourceUrl = "https://github.com/leandromlmoreira/portfolio";

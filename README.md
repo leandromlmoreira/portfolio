@@ -2,7 +2,7 @@
 
 Meu portfólio em forma de app, feito em React Native + Expo: os projetos que estão no ar, filtros por tecnologia, detalhes de cada um e as ferramentas com que trabalho, no celular e na web.
 
-**[Ver ao vivo →](https://leandromlmoreira.github.io/react-native-portfolio/)**
+**[Ver ao vivo →](https://leandromlmoreira.github.io/portfolio/)**
 
 ![Navegação no celular: lista de projetos, filtro por MySQL, detalhe do SQL Lab e skills](docs/preview.gif)
 
@@ -52,8 +52,8 @@ Os textos de cada projeto ficam em [`src/data/projects.ts`](src/data/projects.ts
 ## Como rodar
 
 ```bash
-git clone https://github.com/leandromlmoreira/react-native-portfolio.git
-cd react-native-portfolio
+git clone https://github.com/leandromlmoreira/portfolio.git
+cd portfolio
 npm install
 npm start
 ```
@@ -73,7 +73,7 @@ npm run typecheck   # tsc --noEmit
 npm run build       # exporta a versão web estática para dist/
 ```
 
-A cada push na `main`, o workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) checa os tipos, exporta a web com `baseUrl` `/react-native-portfolio` (definido no `app.json`) e publica no GitHub Pages.
+A cada push na `main`, o workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) checa os tipos, exporta a web com `baseUrl` `/portfolio` (definido no `app.json`) e publica no GitHub Pages.
 
 ## Estrutura
 
