@@ -8,7 +8,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Interfaces",
     caption: "Web e mobile com a mesma base de TypeScript.",
-    skills: ["TypeScript", "React", "React Native", "Expo", "Next.js", "Vite", "Preact"],
+    skills: ["TypeScript", "React", "React Native", "Expo", "Expo Router", "Next.js", "Vite", "Preact"],
   },
   {
     title: "Movimento e desenho",
@@ -18,11 +18,11 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Back-end e dados",
     caption: "APIs, modelagem e persistência.",
-    skills: ["Node.js", "Express", "PHP", "Java", "MySQL", "SQLite"],
+    skills: ["Node.js", "Express", "Python", "FastAPI", "SQLAlchemy", "PHP", "Java", "MySQL", "SQLite"],
   },
   {
     title: "IA e qualidade",
     caption: "Agentes, testes e ferramentas do dia a dia.",
-    skills: ["Agentes de IA", "MCP", "Jest", "Maven", "JavaScript"],
+    skills: ["Agentes de IA", "MCP", "Jest", "pytest", "Docker", "Maven", "JavaScript"],
   },
 ];

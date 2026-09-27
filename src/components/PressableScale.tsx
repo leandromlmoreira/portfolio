@@ -8,8 +8,14 @@ import {
   type StyleProp,
   type ViewStyle,
 } from "react-native";
+import { usingKeyboard } from "../lib/inputModality";
 
 type Interaction = PressableStateCallbackType & { hovered?: boolean; focused?: boolean };
+
+const visible = (state: PressableStateCallbackType): Interaction => {
+  const interaction = state as Interaction;
+  return { ...interaction, focused: Boolean(interaction.focused) && usingKeyboard() };
+};
 
 type Props = {
   onPress: () => void;
@@ -49,9 +55,9 @@ export function PressableScale({
         accessibilityRole={role}
         accessibilityLabel={label}
         accessibilityState={selected === undefined ? undefined : { selected }}
-        style={(state) => (typeof style === "function" ? style(state as Interaction) : style)}
+        style={(state) => (typeof style === "function" ? style(visible(state)) : style)}
       >
-        {(state) => (typeof children === "function" ? children(state as Interaction) : children)}
+        {(state) => (typeof children === "function" ? children(visible(state)) : children)}
       </Pressable>
     </Animated.View>
   );

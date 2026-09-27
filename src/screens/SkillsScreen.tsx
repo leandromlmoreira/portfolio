@@ -7,16 +7,19 @@ import { Screen } from "../components/Screen";
 import { TopBar } from "../components/TopBar";
 import { FadeIn } from "../components/FadeIn";
 import { SkillGroupCard } from "../components/SkillGroupCard";
-import { colors, fonts, space } from "../theme/tokens";
+import type { Palette } from "../theme/palettes";
+import { useStyles } from "../theme/useStyles";
+import { fonts, space } from "../theme/tokens";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Skills">;
 
 export default function SkillsScreen({ navigation }: Props) {
+  const styles = useStyles(createStyles);
   return (
     <Screen header={<TopBar title="Skills" onBack={navigation.goBack} />}>
       <FadeIn style={styles.intro}>
         <Text style={styles.title} accessibilityRole="header">
-          Com o que{"\n"}trabalho<Text style={styles.dot}>.</Text>
+          Com o que <Text style={styles.titleItalic}>trabalho</Text>
         </Text>
         <Text style={styles.lead}>
           Sem barra de porcentagem: cada tecnologia mostra em quais projetos ela aparece. Toque para ver.
@@ -24,7 +27,7 @@ export default function SkillsScreen({ navigation }: Props) {
       </FadeIn>
 
       {skillGroups.map((group, index) => (
-        <FadeIn key={group.title} order={index + 1}>
+        <FadeIn key={group.title} order={index + 1} style={styles.group}>
           <SkillGroupCard
             group={group}
             projects={projects}
@@ -36,25 +39,30 @@ export default function SkillsScreen({ navigation }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  intro: {
-    gap: 12,
-    paddingTop: space.lg,
-  },
-  title: {
-    fontFamily: fonts.display,
-    fontSize: 36,
-    lineHeight: 40,
-    letterSpacing: -1.2,
-    color: colors.paper,
-  },
-  lead: {
-    fontFamily: fonts.bodyRegular,
-    fontSize: 15,
-    lineHeight: 23,
-    color: colors.muted,
-  },
-  dot: {
-    color: colors.signal,
-  },
-});
+const createStyles = (c: Palette) =>
+  StyleSheet.create({
+    intro: {
+      gap: 12,
+      paddingTop: space.md,
+    },
+    title: {
+      fontFamily: fonts.display,
+      fontSize: 52,
+      lineHeight: 54,
+      letterSpacing: -1,
+      color: c.ink,
+    },
+    titleItalic: {
+      fontFamily: fonts.displayItalic,
+      color: c.accent,
+    },
+    lead: {
+      fontFamily: fonts.body,
+      fontSize: 15,
+      lineHeight: 23,
+      color: c.muted,
+    },
+    group: {
+      marginTop: -space.lg,
+    },
+  });

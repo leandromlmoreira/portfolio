@@ -5,13 +5,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#0A0B0F",
+        "backgroundColor": "#16181D",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -22,14 +22,14 @@
       "favicon": "./assets/favicon.png",
       "name": "Leandro Macedo · Portfólio",
       "shortName": "Portfólio",
-      "description": "Portfólio mobile de Leandro Macedo em React Native + Expo: projetos no ar, filtros por stack e skills.",
-      "backgroundColor": "#0A0B0F",
-      "themeColor": "#0A0B0F"
+      "description": "Portfólio mobile de Leandro Macedo em React Native + Expo: 11 projetos no ar, filtro por stack, detalhes com demo e código, e skills.",
+      "backgroundColor": "#F4F1EA",
+      "themeColor": "#F4F1EA"
     },
     "plugins": [
       "expo-font"
     ],
-    "backgroundColor": "#0A0B0F",
+    "backgroundColor": "#F4F1EA",
     "experiments": {
       "baseUrl": "/portfolio"
     }
