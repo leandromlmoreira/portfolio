@@ -1,35 +1,34 @@
-/**
- * Dados do portfólio. Troque tudo aqui pelos seus dados reais:
- * - `avatarUri`: link para a sua foto (ou use um require('./sua-foto.png') local).
- * - `links`: suas redes/contatos de verdade.
- * - `skills`: suas habilidades e o nível de cada uma (0 a 1).
- */
-export const profile = {
-  name: "Seu Nome Aqui",
-  headline: "Desenvolvedor(a) Mobile React Native",
-  avatarUri: "https://api.dicebear.com/9.x/initials/png?seed=SN&backgroundType=gradientLinear",
-};
-
 export type ProfileLink = {
   label: string;
+  handle: string;
   url: string;
+  icon: "code" | "globe";
+};
+
+export const profile = {
+  firstName: "Leandro",
+  lastName: "Moreira",
+  initials: "LM",
+  role: "Full Stack & AI Engineer",
+  location: "Iguaba Grande, RJ · Brasil",
+  intro:
+    "Construo produtos para web e mobile com TypeScript, React e React Native, e agentes de IA com MCP. Cada projeto aqui está no ar e tem o código aberto.",
+  handle: "@leandromlmoreira",
 };
 
 export const links: ProfileLink[] = [
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/seu-usuario" },
-  { label: "GitHub", url: "https://github.com/seu-usuario" },
-  { label: "E-mail", url: "mailto:seuemail@exemplo.com" },
+  {
+    label: "GitHub",
+    handle: "github.com/leandromlmoreira",
+    url: "https://github.com/leandromlmoreira",
+    icon: "code",
+  },
+  {
+    label: "Site",
+    handle: "leandromaiscedo.dev",
+    url: "https://www.leandromaiscedo.dev",
+    icon: "globe",
+  },
 ];
 
-export type Skill = {
-  name: string;
-  level: number; // 0 a 1
-};
-
-export const skills: Skill[] = [
-  { name: "React Native", level: 0.8 },
-  { name: "JavaScript / TypeScript", level: 0.85 },
-  { name: "React Navigation", level: 0.75 },
-  { name: "Expo", level: 0.8 },
-  { name: "Git & GitHub", level: 0.7 },
-];
+export const sourceUrl = "https://github.com/leandromlmoreira/react-native-portfolio";
