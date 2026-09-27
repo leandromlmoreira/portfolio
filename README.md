@@ -1,6 +1,6 @@
 # Leandro Macedo · Portfólio
 
-Meu portfólio em forma de app, feito em React Native + Expo: os 11 projetos que estão no ar, com print real de cada um, filtro por tecnologia, detalhes, links e as ferramentas com que trabalho, no celular e na web.
+Meu portfólio em forma de app, feito em React Native + Expo: os 10 projetos que estão no ar, com print real de cada um, filtro por tecnologia, detalhes, links e as ferramentas com que trabalho, no celular e na web.
 
 **[Ver ao vivo →](https://leandromlmoreira.github.io/portfolio/)**
 
@@ -45,13 +45,12 @@ Meu portfólio em forma de app, feito em React Native + Expo: os 11 projetos que
 | [Lastro](https://github.com/leandromlmoreira/banking-api-fastapi) | Private banking sobre uma API FastAPI assíncrona com JWT | [ao vivo](https://leandromlmoreira.github.io/banking-api-fastapi/) |
 | [Aranhaverso](https://github.com/leandromlmoreira/spiderverse) | Revista em quadrinhos interativa com glitch dimensional | [ao vivo](https://leandromlmoreira.github.io/spiderverse/) |
 | [Forja de Heróis](https://github.com/leandromlmoreira/herolevel) | Cartas colecionáveis em pixel art forjadas a partir do nome e do XP | [ao vivo](https://leandromlmoreira.github.io/herolevel/) |
-| [Bat-Sinal](https://github.com/leandromlmoreira/bat-sinal) | App mobile em React Native com a cena de Gotham desenhada em SVG | [ao vivo](https://leandromlmoreira.github.io/bat-sinal/) |
+| [Bat-Sinal](https://github.com/leandromlmoreira/bat-sinal) | Central do GCPD em React Native: cena de Gotham em SVG e o gerador de senhas BatPass | [ao vivo](https://leandromlmoreira.github.io/bat-sinal/) · [BatPass](https://leandromlmoreira.github.io/bat-sinal/#batpass) |
 | [Toro](https://github.com/leandromlmoreira/lamborghini) | Showroom de supercarros em React Native + Expo Router com API via axios | [ao vivo](https://leandromlmoreira.github.io/lamborghini/) |
 | [Tomada](https://github.com/leandromlmoreira/video-capture) | Estúdio de vídeo de bolso com câmera no aparelho e MediaRecorder na web | [ao vivo](https://leandromlmoreira.github.io/video-capture/) |
 | [SQL Lab](https://github.com/leandromlmoreira/sql-lab) | Modelagem e SQL com playground que roda os scripts no navegador | [ao vivo](https://leandromlmoreira.github.io/sql-lab/) |
 | [JavaLab](https://github.com/leandromlmoreira/javalab) | Apps em Java abertos numa IDE que roda no navegador | [ao vivo](https://leandromlmoreira.github.io/javalab/) |
 | [RankTier](https://github.com/leandromlmoreira/ranktier) | RPG pixel art de duelos sobre uma biblioteca de patentes em JavaScript | [ao vivo](https://leandromlmoreira.github.io/ranktier/) |
-| [BatPass](https://github.com/leandromlmoreira/bat-pass) | Gerador de senhas com entropia real e aleatoriedade criptográfica | [ao vivo](https://leandromlmoreira.github.io/bat-pass/) |
 
 Os textos de cada projeto ficam em [`src/data/projects.ts`](src/data/projects.ts) e os prints em [`assets/projects/`](assets/projects); perfil e links em [`src/data/profile.ts`](src/data/profile.ts); grupos de skills em [`src/data/skills.ts`](src/data/skills.ts).
 

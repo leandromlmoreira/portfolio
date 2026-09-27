@@ -112,14 +112,14 @@ export const projects: Project[] = [
     name: "Bat-Sinal",
     kicker: "App mobile · Expo",
     tagline:
-      "Um toque acende o holofote no telhado e projeta o sinal nas nuvens de Gotham, no celular e na web.",
+      "Central do GCPD em duas áreas: um toque acende o holofote nas nuvens de Gotham e, ao lado, o BatPass gera senhas fortes.",
     summary:
-      "Central de chamados do GCPD em React Native. A cena inteira, do céu à chuva e ao feixe de luz, é desenhada em SVG e animada com a API Animated no driver nativo.",
+      "App React Native com a cena de Gotham desenhada em SVG e o BatPass, o gerador de senhas que virou a segunda área do app (link direto em #batpass), com aleatoriedade criptográfica e entropia real testadas no runner nativo do Node.",
     highlights: [
-      "Skyline em três camadas com parallax, janelas que acendem e apagam e chuva em duas profundidades.",
-      "Ignição com estalo: o feixe sobe gaguejando como um arco de carbono antes de projetar o símbolo.",
+      "Skyline com parallax, chuva em duas profundidades e ignição com estalo antes de projetar o símbolo.",
       "Terminal do GCPD com log de eventos, status ao vivo e contador de chamados animado.",
-      "Vibração ao acionar, foco no teclado na web e respeito a reduzir movimento.",
+      "BatPass: Web Crypto com amostragem por rejeição, força em bits de entropia e histórico mascarado no aparelho.",
+      "Transição que mergulha no morcego projetado entre as áreas, foco no teclado e respeito a reduzir movimento.",
     ],
     stack: ["React Native", "Expo", "TypeScript", "SVG"],
     repo: repo("bat-sinal"),
@@ -232,27 +232,6 @@ export const projects: Project[] = [
     accent: "#4E9BD8",
     shot: require("../../assets/projects/ranktier.jpg"),
     shotMobile: require("../../assets/projects/ranktier-mobile.jpg"),
-  },
-  {
-    id: "batpass",
-    name: "BatPass",
-    kicker: "App mobile · Segurança",
-    tagline:
-      "Gerador de senhas com força medida em bits de entropia, aleatoriedade criptográfica e histórico que não sai do aparelho.",
-    summary:
-      "React Native com expo-crypto e amostragem por rejeição, sem Math.random. As regras de geração e entropia são puras e testadas com o runner nativo do Node.",
-    highlights: [
-      "Comprimento de 8 a 64, tipos de caractere e opção de evitar caracteres ambíguos.",
-      "Cada tipo ativo aparece ao menos uma vez, com embaralhamento Fisher-Yates.",
-      "Medidor de força com entropia real e estimativa de tempo de força bruta.",
-      "Histórico das últimas senhas copiadas, mascarado e salvo localmente.",
-    ],
-    stack: ["React Native", "Expo", "TypeScript", "SVG"],
-    repo: repo("bat-pass"),
-    live: pages("bat-pass"),
-    accent: "#8C93A6",
-    shot: require("../../assets/projects/batpass.jpg"),
-    shotMobile: require("../../assets/projects/batpass-mobile.jpg"),
   },
 ];
 
