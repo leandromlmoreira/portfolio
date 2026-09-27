@@ -1,13 +1,14 @@
-import { Platform, StyleSheet, View, useWindowDimensions } from "react-native";
+import { useState } from "react";
+import { Platform, View, useWindowDimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
-import { Syne_700Bold, Syne_800ExtraBold } from "@expo-google-fonts/syne";
-import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from "@expo-google-fonts/manrope";
-import { JetBrainsMono_500Medium } from "@expo-google-fonts/jetbrains-mono";
+import { InstrumentSerif_400Regular, InstrumentSerif_400Regular_Italic } from "@expo-google-fonts/instrument-serif";
+import { Geist_400Regular, Geist_500Medium, Geist_600SemiBold } from "@expo-google-fonts/geist";
+import { GeistMono_400Regular, GeistMono_500Medium } from "@expo-google-fonts/geist-mono";
 import { AppNavigator, navigationRef } from "./src/navigation/AppNavigator";
 import { DesktopStage } from "./src/components/DesktopStage";
-import { colors } from "./src/theme/tokens";
+import { ThemeProvider, useTheme } from "./src/theme/ThemeProvider";
 
 const stageBreakpoint = 1024;
 
@@ -17,29 +18,34 @@ const openProject = (id: string) => {
   }
 };
 
-export default function App() {
+function Shell() {
   const { width } = useWindowDimensions();
+  const { palette, scheme } = useTheme();
+  const [activeProject, setActiveProject] = useState<string | null>(null);
   const [fontsLoaded] = useFonts({
-    Syne_700Bold,
-    Syne_800ExtraBold,
-    Manrope_400Regular,
-    Manrope_500Medium,
-    Manrope_700Bold,
-    JetBrainsMono_500Medium,
+    InstrumentSerif_400Regular,
+    InstrumentSerif_400Regular_Italic,
+    Geist_400Regular,
+    Geist_500Medium,
+    Geist_600SemiBold,
+    GeistMono_400Regular,
+    GeistMono_500Medium,
   });
 
+  const background = { flex: 1, backgroundColor: palette.bg };
+
   if (!fontsLoaded) {
-    return <View style={styles.boot} />;
+    return <View style={background} />;
   }
 
   const staged = Platform.OS === "web" && width >= stageBreakpoint;
 
   return (
-    <SafeAreaProvider style={styles.boot}>
-      <StatusBar style="light" />
+    <SafeAreaProvider style={background}>
+      <StatusBar style={scheme === "dark" ? "light" : "dark"} />
       {staged ? (
-        <DesktopStage onOpenProject={openProject}>
-          <AppNavigator />
+        <DesktopStage onOpenProject={openProject} activeProject={activeProject}>
+          <AppNavigator onProjectChange={setActiveProject} />
         </DesktopStage>
       ) : (
         <AppNavigator />
@@ -48,9 +54,10 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  boot: {
-    flex: 1,
-    backgroundColor: colors.ink,
-  },
-});
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Shell />
+    </ThemeProvider>
+  );
+}

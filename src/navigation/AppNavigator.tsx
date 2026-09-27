@@ -1,5 +1,7 @@
+import { useMemo } from "react";
 import {
   DarkTheme,
+  DefaultTheme,
   NavigationContainer,
   createNavigationContainerRef,
   type Theme,
@@ -11,35 +13,52 @@ import ProjectsScreen from "../screens/ProjectsScreen";
 import ProjectScreen from "../screens/ProjectScreen";
 import SkillsScreen from "../screens/SkillsScreen";
 import { findProject } from "../data/projects";
-import { colors } from "../theme/tokens";
+import { useTheme } from "../theme/ThemeProvider";
+import type { Palette } from "../theme/palettes";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
-const theme: Theme = {
-  ...DarkTheme,
-  colors: {
-    ...DarkTheme.colors,
-    background: colors.ink,
-    card: colors.ink,
-    text: colors.paper,
-    border: colors.line,
-    primary: colors.signal,
-  },
+const navigationTheme = (palette: Palette): Theme => {
+  const base = palette.scheme === "dark" ? DarkTheme : DefaultTheme;
+  return {
+    ...base,
+    colors: {
+      ...base.colors,
+      background: palette.bg,
+      card: palette.bg,
+      text: palette.ink,
+      border: palette.line,
+      primary: palette.accent,
+    },
+  };
 };
 
-export function AppNavigator() {
+type Props = {
+  onProjectChange?: (id: string | null) => void;
+};
+
+const currentProjectId = () => {
+  const route = navigationRef.getCurrentRoute();
+  return route?.name === "Project" ? (route.params as RootStackParamList["Project"]).id : null;
+};
+
+export function AppNavigator({ onProjectChange }: Props) {
+  const { palette } = useTheme();
+  const theme = useMemo(() => navigationTheme(palette), [palette]);
+
   return (
     <NavigationContainer
       ref={navigationRef}
       theme={theme}
+      onStateChange={() => onProjectChange?.(currentProjectId())}
       documentTitle={{ formatter: (options) => `${options?.title ?? "Portfólio"} · Leandro Macedo` }}
     >
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: colors.ink },
+          contentStyle: { backgroundColor: palette.bg },
           animation: "slide_from_right",
         }}
       >

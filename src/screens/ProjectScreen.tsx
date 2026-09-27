@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-import { findProject, projects } from "../data/projects";
+import { findProject, liveHost, projects } from "../data/projects";
 import { openLink } from "../lib/openLink";
 import { Screen } from "../components/Screen";
 import { TopBar } from "../components/TopBar";
@@ -13,16 +13,24 @@ import { SectionTitle } from "../components/SectionTitle";
 import { HighlightList } from "../components/HighlightList";
 import { TagRow } from "../components/Tag";
 import { ProjectCard } from "../components/ProjectCard";
-import { colors, fonts, radii, space } from "../theme/tokens";
+import { PressableScale } from "../components/PressableScale";
+import { Icon } from "../components/icons/Icon";
+import type { Palette } from "../theme/palettes";
+import { useStyles } from "../theme/useStyles";
+import { useTheme } from "../theme/ThemeProvider";
+import { fonts, radii, space } from "../theme/tokens";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Project">;
 
 const fitTitle = (name: string) => {
-  const fontSize = Math.min(42, Math.floor(318 / (name.length * 0.95)));
-  return { fontSize, lineHeight: Math.round(fontSize * 1.1) };
+  const fontSize = name.length > 12 ? 50 : 58;
+  return { fontSize, lineHeight: Math.round(fontSize * 1.02) };
 };
 
+const pad = (value: number) => String(value).padStart(2, "0");
+
 function NotFound({ onBack }: { onBack: () => void }) {
+  const styles = useStyles(createStyles);
   return (
     <Screen header={<TopBar title="Projeto" onBack={onBack} />}>
       <View style={styles.missing}>
@@ -33,7 +41,26 @@ function NotFound({ onBack }: { onBack: () => void }) {
   );
 }
 
+function LiveAddress({ url, host }: { url: string; host: string }) {
+  const styles = useStyles(createStyles);
+  const { palette } = useTheme();
+  return (
+    <PressableScale onPress={() => openLink(url)} label={`Abrir ${host}`} role="link" pressedScale={0.985}>
+      {({ hovered }) => (
+        <View style={[styles.address, hovered && styles.addressHover]}>
+          <View style={styles.liveDot} />
+          <Text style={styles.addressText} numberOfLines={1}>
+            {host}
+          </Text>
+          <Icon name="arrowUpRight" size={13} color={hovered ? palette.ink : palette.faint} />
+        </View>
+      )}
+    </PressableScale>
+  );
+}
+
 export default function ProjectScreen({ navigation, route }: Props) {
+  const styles = useStyles(createStyles);
   const project = findProject(route.params.id);
 
   if (!project) {
@@ -45,19 +72,17 @@ export default function ProjectScreen({ navigation, route }: Props) {
 
   return (
     <Screen
-      backdrop={<Glow color={project.accent} height={520} />}
+      backdrop={<Glow color={project.accent} height={560} />}
       header={
         <TopBar
           title={project.kicker}
-          trailing={`${String(position + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`}
+          trailing={`${pad(position + 1)} / ${pad(projects.length)}`}
           onBack={navigation.goBack}
         />
       }
     >
-      <FadeIn style={styles.coverShell}>
-        <View style={styles.coverCore}>
-          <ProjectCover kind={project.cover} ratio={4 / 3} />
-        </View>
+      <FadeIn style={styles.coverCard}>
+        <ProjectCover project={project} ratio={4 / 3} withPhone />
       </FadeIn>
 
       <FadeIn order={1} style={styles.head}>
@@ -65,11 +90,12 @@ export default function ProjectScreen({ navigation, route }: Props) {
           {project.name}
         </Text>
         <Text style={styles.tagline}>{project.tagline}</Text>
+        <LiveAddress url={project.live} host={liveHost(project)} />
       </FadeIn>
 
       <FadeIn order={2} style={styles.actions}>
-        <PillButton label="Ver ao vivo" tone={project.accent} grow onPress={() => openLink(project.live)} />
-        <PillButton label="Código" icon="code" variant="ghost" onPress={() => openLink(project.repo)} />
+        <PillButton label="Ver ao vivo" variant="accent" grow role="link" onPress={() => openLink(project.live)} />
+        <PillButton label="Código" icon="code" variant="ghost" role="link" onPress={() => openLink(project.repo)} />
       </FadeIn>
 
       <FadeIn order={3} style={styles.section}>
@@ -79,7 +105,7 @@ export default function ProjectScreen({ navigation, route }: Props) {
 
       <FadeIn order={4} style={styles.sectionTight}>
         <SectionTitle title="Destaques" />
-        <HighlightList items={project.highlights} accent={project.accent} />
+        <HighlightList items={project.highlights} />
       </FadeIn>
 
       <FadeIn order={5} style={styles.section}>
@@ -100,60 +126,86 @@ export default function ProjectScreen({ navigation, route }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  coverShell: {
-    marginTop: space.sm,
-    padding: 5,
-    borderRadius: radii.shell,
-    borderWidth: 1,
-    borderColor: colors.line,
-    backgroundColor: "rgba(242, 239, 232, 0.03)",
-  },
-  coverCore: {
-    borderRadius: radii.core,
-    overflow: "hidden",
-  },
-  head: {
-    gap: 12,
-  },
-  title: {
-    fontFamily: fonts.display,
-    fontSize: 42,
-    lineHeight: 46,
-    letterSpacing: -1.2,
-    color: colors.paper,
-  },
-  tagline: {
-    fontFamily: fonts.bodyRegular,
-    fontSize: 16.5,
-    lineHeight: 26,
-    color: colors.muted,
-  },
-  actions: {
-    flexDirection: "row",
-    gap: 10,
-  },
-  section: {
-    gap: space.md,
-  },
-  sectionTight: {
-    gap: space.xs,
-  },
-  summary: {
-    fontFamily: fonts.bodyRegular,
-    fontSize: 15,
-    lineHeight: 24,
-    color: colors.muted,
-  },
-  nextLabel: {
-    fontFamily: fonts.mono,
-    fontSize: 11,
-    letterSpacing: 1.6,
-    textTransform: "uppercase",
-    color: colors.faint,
-  },
-  missing: {
-    gap: 12,
-    paddingTop: space.xxl,
-  },
-});
+const createStyles = (c: Palette) =>
+  StyleSheet.create({
+    coverCard: {
+      borderRadius: radii.core,
+      borderWidth: 1,
+      borderColor: c.line,
+      overflow: "hidden",
+    },
+    head: {
+      gap: 14,
+      marginTop: -space.md,
+    },
+    title: {
+      fontFamily: fonts.display,
+      fontSize: 56,
+      lineHeight: 58,
+      letterSpacing: -1,
+      color: c.ink,
+    },
+    tagline: {
+      fontFamily: fonts.body,
+      fontSize: 16.5,
+      lineHeight: 26,
+      color: c.muted,
+    },
+    address: {
+      alignSelf: "flex-start",
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 7,
+      maxWidth: "100%",
+      paddingHorizontal: 10,
+      paddingVertical: 7,
+      borderRadius: radii.pill,
+      borderWidth: 1,
+      borderColor: c.line,
+      backgroundColor: c.surface,
+    },
+    addressHover: {
+      borderColor: c.lineStrong,
+    },
+    liveDot: {
+      width: 6,
+      height: 6,
+      borderRadius: 3,
+      backgroundColor: c.live,
+    },
+    addressText: {
+      flexShrink: 1,
+      fontFamily: fonts.mono,
+      fontSize: 10.5,
+      letterSpacing: -0.2,
+      color: c.muted,
+    },
+    actions: {
+      flexDirection: "row",
+      gap: 10,
+      marginTop: -space.md,
+    },
+    section: {
+      gap: space.md,
+    },
+    sectionTight: {
+      gap: space.xs,
+    },
+    summary: {
+      fontFamily: fonts.body,
+      fontSize: 15,
+      lineHeight: 24,
+      color: c.muted,
+    },
+    nextLabel: {
+      fontFamily: fonts.monoMedium,
+      fontSize: 11,
+      letterSpacing: 1.4,
+      textTransform: "uppercase",
+      color: c.faint,
+    },
+    missing: {
+      gap: 12,
+      paddingTop: space.xxl,
+    },
+  });

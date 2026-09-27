@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import { colors, fonts, radii } from "../theme/tokens";
+import type { Palette } from "../theme/palettes";
+import { useStyles } from "../theme/useStyles";
+import { fonts, radii } from "../theme/tokens";
 
 export type Stat = {
   value: string;
@@ -7,6 +9,7 @@ export type Stat = {
 };
 
 export function StatStrip({ stats }: { stats: Stat[] }) {
+  const styles = useStyles(createStyles);
   return (
     <View style={styles.strip}>
       {stats.map((stat, index) => (
@@ -19,33 +22,36 @@ export function StatStrip({ stats }: { stats: Stat[] }) {
   );
 }
 
-const styles = StyleSheet.create({
-  strip: {
-    flexDirection: "row",
-    borderRadius: radii.core,
-    borderWidth: 1,
-    borderColor: colors.line,
-    backgroundColor: "rgba(242, 239, 232, 0.025)",
-    paddingVertical: 16,
-  },
-  cell: {
-    flex: 1,
-    paddingHorizontal: 14,
-    gap: 4,
-  },
-  divided: {
-    borderLeftWidth: 1,
-    borderLeftColor: colors.line,
-  },
-  value: {
-    fontFamily: fonts.display,
-    fontSize: 24,
-    color: colors.paper,
-  },
-  label: {
-    fontFamily: fonts.body,
-    fontSize: 12,
-    lineHeight: 16,
-    color: colors.faint,
-  },
-});
+const createStyles = (c: Palette) =>
+  StyleSheet.create({
+    strip: {
+      flexDirection: "row",
+      borderRadius: radii.core,
+      borderWidth: 1,
+      borderColor: c.line,
+      backgroundColor: c.surface,
+      paddingVertical: 16,
+    },
+    cell: {
+      flex: 1,
+      paddingHorizontal: 14,
+      gap: 2,
+    },
+    divided: {
+      borderLeftWidth: 1,
+      borderLeftColor: c.line,
+    },
+    value: {
+      fontFamily: fonts.display,
+      fontSize: 38,
+      lineHeight: 42,
+      letterSpacing: -0.5,
+      color: c.ink,
+    },
+    label: {
+      fontFamily: fonts.body,
+      fontSize: 12,
+      lineHeight: 16,
+      color: c.faint,
+    },
+  });

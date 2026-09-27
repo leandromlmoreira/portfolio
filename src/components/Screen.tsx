@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { colors, space } from "../theme/tokens";
+import type { Palette } from "../theme/palettes";
+import { useStyles } from "../theme/useStyles";
+import { space } from "../theme/tokens";
 
 type Props = {
   children: ReactNode;
@@ -11,6 +13,7 @@ type Props = {
 
 export function Screen({ children, header, backdrop }: Props) {
   const insets = useSafeAreaInsets();
+  const styles = useStyles(createStyles);
 
   return (
     <View style={styles.root}>
@@ -20,7 +23,7 @@ export function Screen({ children, header, backdrop }: Props) {
         style={styles.scroll}
         contentContainerStyle={[
           styles.content,
-          { paddingTop: header ? space.md : insets.top + space.xl, paddingBottom: insets.bottom + space.huge },
+          { paddingTop: header ? space.lg : insets.top + space.xl, paddingBottom: insets.bottom + space.huge },
         ]}
         showsVerticalScrollIndicator={false}
       >
@@ -30,17 +33,21 @@ export function Screen({ children, header, backdrop }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: colors.ink,
-    overflow: "hidden",
-  },
-  scroll: {
-    flex: 1,
-  },
-  content: {
-    paddingHorizontal: space.gutter,
-    gap: space.xxl,
-  },
-});
+const createStyles = (c: Palette) =>
+  StyleSheet.create({
+    root: {
+      flex: 1,
+      backgroundColor: c.bg,
+      overflow: "hidden",
+    },
+    scroll: {
+      flex: 1,
+    },
+    content: {
+      width: "100%",
+      maxWidth: 640,
+      alignSelf: "center",
+      paddingHorizontal: space.gutter,
+      gap: space.section,
+    },
+  });
