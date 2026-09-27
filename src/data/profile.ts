@@ -7,7 +7,7 @@ export type ProfileLink = {
 
 export const profile = {
   firstName: "Leandro",
-  lastName: "Moreira",
+  lastName: "Macedo",
   initials: "LM",
   role: "Full Stack & AI Engineer",
   location: "Iguaba Grande, RJ · Brasil",

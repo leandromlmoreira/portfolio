@@ -34,7 +34,7 @@ export function AppNavigator() {
     <NavigationContainer
       ref={navigationRef}
       theme={theme}
-      documentTitle={{ formatter: (options) => `${options?.title ?? "Portfólio"} · Leandro Moreira` }}
+      documentTitle={{ formatter: (options) => `${options?.title ?? "Portfólio"} · Leandro Macedo` }}
     >
       <Stack.Navigator
         screenOptions={{

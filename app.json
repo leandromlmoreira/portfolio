@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Leandro Moreira · Portfólio",
+    "name": "Leandro Macedo · Portfólio",
     "slug": "react-native-portfolio",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,9 +20,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "name": "Leandro Moreira · Portfólio",
+      "name": "Leandro Macedo · Portfólio",
       "shortName": "Portfólio",
-      "description": "Portfólio mobile de Leandro Moreira em React Native + Expo: projetos no ar, filtros por stack e skills.",
+      "description": "Portfólio mobile de Leandro Macedo em React Native + Expo: projetos no ar, filtros por stack e skills.",
       "backgroundColor": "#0A0B0F",
       "themeColor": "#0A0B0F"
     },

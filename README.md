@@ -1,4 +1,4 @@
-# Leandro Moreira · Portfólio
+# Leandro Macedo · Portfólio
 
 Meu portfólio em forma de app, feito em React Native + Expo: os projetos que estão no ar, filtros por tecnologia, detalhes de cada um e as ferramentas com que trabalho, no celular e na web.
 
