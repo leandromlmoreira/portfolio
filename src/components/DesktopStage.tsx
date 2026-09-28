@@ -38,10 +38,11 @@ function Grid() {
 type IndexRowProps = {
   index: number;
   active: boolean;
+  dense: boolean;
   onOpen: (id: string) => void;
 };
 
-function IndexRow({ index, active, onOpen }: IndexRowProps) {
+function IndexRow({ index, active, dense, onOpen }: IndexRowProps) {
   const styles = useStyles(createStyles);
   const { palette } = useTheme();
   const project = projects[index];
@@ -54,6 +55,7 @@ function IndexRow({ index, active, onOpen }: IndexRowProps) {
       pressedScale={0.97}
       style={({ hovered, focused }) => [
         styles.indexRow,
+        dense && styles.indexRowDense,
         (hovered || active) && styles.indexRowHover,
         focused && styles.focus,
       ]}
@@ -78,7 +80,13 @@ function IndexRow({ index, active, onOpen }: IndexRowProps) {
   );
 }
 
-function ProjectIndex({ active, onOpen }: { active: string | null; onOpen: (id: string) => void }) {
+type ProjectIndexProps = {
+  active: string | null;
+  dense: boolean;
+  onOpen: (id: string) => void;
+};
+
+function ProjectIndex({ active, dense, onOpen }: ProjectIndexProps) {
   const styles = useStyles(createStyles);
   return (
     <View style={styles.index}>
@@ -86,7 +94,7 @@ function ProjectIndex({ active, onOpen }: { active: string | null; onOpen: (id: 
       <View style={styles.indexGrid}>
         {projects.map((project, index) => (
           <View key={project.id} style={styles.indexCell}>
-            <IndexRow index={index} active={project.id === active} onOpen={onOpen} />
+            <IndexRow index={index} active={project.id === active} dense={dense} onOpen={onOpen} />
           </View>
         ))}
       </View>
@@ -141,6 +149,7 @@ export function DesktopStage({ children, activeProject, onOpenProject }: StagePr
   const styles = useStyles(createStyles);
   const { width, height } = useWindowDimensions();
   const roomy = width >= 1280;
+  const dense = height < 860;
   const phoneHeight = Math.max(640, Math.min(844, height - 96));
   const github = links[0];
 
@@ -163,7 +172,7 @@ export function DesktopStage({ children, activeProject, onOpenProject }: StagePr
             {profile.role}. Este é o meu portfólio em forma de app: o mesmo código roda no celular e aqui no
             navegador. Escolha um projeto no índice ou navegue pelo aparelho.
           </Text>
-          <ProjectIndex active={activeProject} onOpen={onOpenProject} />
+          <ProjectIndex active={activeProject} dense={dense} onOpen={onOpenProject} />
           <View style={styles.actions}>
             <PillButton label="Perfil no GitHub" role="link" onPress={() => openLink(github.url)} />
             <PillButton
@@ -270,6 +279,9 @@ const createStyles = (c: Palette) =>
       height: 38,
       paddingHorizontal: 6,
       borderRadius: 8,
+    },
+    indexRowDense: {
+      height: 33,
     },
     indexRowHover: {
       backgroundColor: c.hover,

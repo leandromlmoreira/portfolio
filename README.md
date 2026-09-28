@@ -1,6 +1,6 @@
 # Leandro Macedo · Portfólio
 
-Meu portfólio em forma de app, feito em React Native + Expo: os 10 projetos que estão no ar, com print real de cada um, filtro por tecnologia, detalhes, links e as ferramentas com que trabalho, no celular e na web.
+Meu portfólio em forma de app, feito em React Native + Expo: os 16 projetos que estão no ar, com print real de cada um, filtro por tecnologia, detalhes, links e as ferramentas com que trabalho, no celular e na web.
 
 **[Ver ao vivo →](https://leandromlmoreira.github.io/portfolio/)**
 
@@ -16,7 +16,7 @@ Meu portfólio em forma de app, feito em React Native + Expo: os 10 projetos que
 
 <p>
   <img src="docs/preview-filtro.png" alt="Lista de projetos filtrada por React Native" width="24%" />
-  <img src="docs/preview-projeto.png" alt="Detalhe do projeto Toro" width="24%" />
+  <img src="docs/preview-projeto.png" alt="Detalhe do Commit City, com o selo de código privado" width="24%" />
   <img src="docs/preview-skills.png" alt="Tela de skills" width="24%" />
   <img src="docs/preview-mobile-escuro.png" alt="Tela inicial no tema escuro" width="24%" />
 </p>
@@ -26,7 +26,7 @@ Meu portfólio em forma de app, feito em React Native + Expo: os 10 projetos que
 - **Início.** Nome, função, localização, números tirados dos próprios dados (projetos no ar, tecnologias usadas, quantos usam TypeScript), carrossel com os projetos selecionados e links para o GitHub e o site.
 - **Projetos com filtro por stack.** Os filtros são gerados a partir das tecnologias dos projetos, com a contagem de cada uma. Tocar numa tecnologia de novo volta para "Todos".
 - **Capas com prints reais.** Cada cartão mostra o print do projeto numa janela de navegador sobre a cor do projeto; no detalhe, a versão desktop e a do celular aparecem juntas.
-- **Detalhe do projeto.** Descrição, destaques, stack, endereço no GitHub Pages e botões "Ver ao vivo" e "Código", que abrem a demo e o repositório com `Linking`. No fim, atalho para o próximo projeto.
+- **Detalhe do projeto.** Descrição, destaques, stack, endereço ao vivo e botões "Ver ao vivo" e "Código", que abrem a demo e o repositório com `Linking`. Quando o repositório é fechado, o botão de código vira um selo discreto "Código privado", sem link. No fim, atalho para o próximo projeto.
 - **Skills sem porcentagem inventada.** Cada tecnologia mostra em quantos projetos aparece, com a cor de cada um; tocar leva à lista já filtrada.
 - **Tema claro e escuro.** Segue o tema do sistema e pode ser trocado por um botão, no app e no palco do desktop. Textos com contraste AA nos dois temas.
 - **Web no desktop.** Em telas largas, o app roda dentro de um aparelho ao lado de uma apresentação com o índice dos projetos; o índice abre o projeto direto no aparelho e marca qual está aberto.
@@ -39,17 +39,25 @@ Meu portfólio em forma de app, feito em React Native + Expo: os 10 projetos que
 
 ## Projetos no app
 
+Os projetos com código fechado aparecem sem link de repositório; no app, o botão de código dá lugar ao selo "Código privado".
+
 | Projeto | O que é | Demo |
 | --- | --- | --- |
-| [Vela](https://github.com/leandromlmoreira/banco-digital) | Banco digital fictício: site, internet banking, painel, console e API | [ao vivo](https://leandromlmoreira.github.io/banco-digital/) |
-| [Lastro](https://github.com/leandromlmoreira/banking-api-fastapi) | Private banking sobre uma API FastAPI assíncrona com JWT | [ao vivo](https://leandromlmoreira.github.io/banking-api-fastapi/) |
+| Commit City | O último ano no GitHub vira uma cidade 3D à beira-mar, em Three.js com shaders próprios | [ao vivo](https://commit-city-lm.vercel.app) |
+| Recall | Memória persistente para agentes de IA via MCP, com painel em conectoma 2D e cérebro 3D | [ao vivo](https://recall-mcp-lm.vercel.app) |
+| Vela | Banco digital fictício: site, internet banking, painel, console e API | [ao vivo](https://vela-banco-lm.vercel.app/banco-digital/) |
+| [Spring Anatomy](https://github.com/leandromlmoreira/spring-anatomy) | Oito padrões de projeto dissecados dentro de uma API Spring Boot real | [ao vivo](https://leandromlmoreira.github.io/spring-anatomy/) |
+| Caixa Alta | Finanças pessoais como um jornal diário: manchetes, orçamentos e previsão de saldo | [ao vivo](https://caixa-alta-lm.vercel.app) |
+| Lastro | Private banking sobre uma API FastAPI assíncrona com JWT | [ao vivo](https://lastro-lm.vercel.app) |
+| Prompt Atlas | Mapa navegável de system prompts de IA, com leitor, comparação e medida de ênfase | [ao vivo](https://prompt-atlas-lm.vercel.app) |
 | [Aranhaverso](https://github.com/leandromlmoreira/spiderverse) | Revista em quadrinhos interativa com glitch dimensional | [ao vivo](https://leandromlmoreira.github.io/spiderverse/) |
-| [Forja de Heróis](https://github.com/leandromlmoreira/herolevel) | Cartas colecionáveis em pixel art forjadas a partir do nome e do XP | [ao vivo](https://leandromlmoreira.github.io/herolevel/) |
+| [Vaga Match](https://github.com/leandromlmoreira/vaga-match) | Extensão do Chrome que dá nota ao currículo contra a vaga aberta na tela | [ao vivo](https://leandromlmoreira.github.io/vaga-match/) |
+| Forja de Heróis | Cartas colecionáveis em pixel art forjadas a partir do nome e do XP | [ao vivo](https://herolevel-lm.vercel.app) |
 | [Bat-Sinal](https://github.com/leandromlmoreira/bat-sinal) | Central do GCPD em React Native: cena de Gotham em SVG e o gerador de senhas BatPass | [ao vivo](https://leandromlmoreira.github.io/bat-sinal/) · [BatPass](https://leandromlmoreira.github.io/bat-sinal/#batpass) |
-| [Toro](https://github.com/leandromlmoreira/lamborghini) | Showroom de supercarros em React Native + Expo Router com API via axios | [ao vivo](https://leandromlmoreira.github.io/lamborghini/) |
-| [Tomada](https://github.com/leandromlmoreira/video-capture) | Estúdio de vídeo de bolso com câmera no aparelho e MediaRecorder na web | [ao vivo](https://leandromlmoreira.github.io/video-capture/) |
+| [Toro](https://github.com/leandromlmoreira/toro) | Showroom de supercarros em React Native + Expo Router com API via axios | [ao vivo](https://leandromlmoreira.github.io/toro/) |
 | [SQL Lab](https://github.com/leandromlmoreira/sql-lab) | Modelagem e SQL com playground que roda os scripts no navegador | [ao vivo](https://leandromlmoreira.github.io/sql-lab/) |
 | [JavaLab](https://github.com/leandromlmoreira/javalab) | Apps em Java abertos numa IDE que roda no navegador | [ao vivo](https://leandromlmoreira.github.io/javalab/) |
+| [Tomada](https://github.com/leandromlmoreira/video-capture) | Estúdio de vídeo de bolso com câmera no aparelho e MediaRecorder na web | [ao vivo](https://leandromlmoreira.github.io/video-capture/) |
 | [RankTier](https://github.com/leandromlmoreira/ranktier) | RPG pixel art de duelos sobre uma biblioteca de patentes em JavaScript | [ao vivo](https://leandromlmoreira.github.io/ranktier/) |
 
 Os textos de cada projeto ficam em [`src/data/projects.ts`](src/data/projects.ts) e os prints em [`assets/projects/`](assets/projects); perfil e links em [`src/data/profile.ts`](src/data/profile.ts); grupos de skills em [`src/data/skills.ts`](src/data/skills.ts).
@@ -84,10 +92,11 @@ npm run ios       # simulador ou dispositivo iOS
 
 ```bash
 npm run typecheck   # tsc --noEmit
+npm test            # node --test nos utilitários de links
 npm run build       # exporta a versão web estática para dist/
 ```
 
-A cada push na `main`, o workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) checa os tipos, exporta a web com `baseUrl` `/portfolio` (definido no `app.json`) e publica no GitHub Pages.
+A cada push na `main`, o workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) checa os tipos, roda os testes, exporta a web com `baseUrl` `/portfolio` (definido no `app.json`) e publica no GitHub Pages.
 
 ## Estrutura
 

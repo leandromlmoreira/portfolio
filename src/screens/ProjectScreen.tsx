@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-import { findProject, liveHost, projects } from "../data/projects";
+import { findProject, projects, type Project } from "../data/projects";
 import { openLink } from "../lib/openLink";
+import { hasPublicCode, liveHost } from "../lib/projectLinks";
+import { PrivateCodeBadge } from "../components/PrivateCodeBadge";
 import { Screen } from "../components/Screen";
 import { TopBar } from "../components/TopBar";
 import { FadeIn } from "../components/FadeIn";
@@ -59,6 +61,13 @@ function LiveAddress({ url, host }: { url: string; host: string }) {
   );
 }
 
+function CodeAction({ project }: { project: Project }) {
+  if (!hasPublicCode(project)) {
+    return <PrivateCodeBadge />;
+  }
+  return <PillButton label="Código" icon="code" variant="ghost" role="link" onPress={() => openLink(project.repo)} />;
+}
+
 export default function ProjectScreen({ navigation, route }: Props) {
   const styles = useStyles(createStyles);
   const project = findProject(route.params.id);
@@ -95,7 +104,7 @@ export default function ProjectScreen({ navigation, route }: Props) {
 
       <FadeIn order={2} style={styles.actions}>
         <PillButton label="Ver ao vivo" variant="accent" grow role="link" onPress={() => openLink(project.live)} />
-        <PillButton label="Código" icon="code" variant="ghost" role="link" onPress={() => openLink(project.repo)} />
+        <CodeAction project={project} />
       </FadeIn>
 
       <FadeIn order={3} style={styles.section}>

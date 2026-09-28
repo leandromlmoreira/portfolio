@@ -1,6 +1,6 @@
 import Svg, { Circle, Path } from "react-native-svg";
 
-export type IconName = "arrowUpRight" | "arrowRight" | "arrowLeft" | "code" | "globe" | "pin" | "sun" | "moon";
+export type IconName = "arrowUpRight" | "arrowRight" | "arrowLeft" | "code" | "globe" | "pin" | "sun" | "moon" | "lock";
 
 type Props = {
   name: IconName;
@@ -26,6 +26,11 @@ const strokes: Record<IconName, string[]> = {
     "M17.2 6.8l1.34-1.34",
   ],
   moon: ["M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"],
+  lock: [
+    "M6.5 10.5h11a1.5 1.5 0 0 1 1.5 1.5v6.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18.5V12a1.5 1.5 0 0 1 1.5-1.5Z",
+    "M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5",
+    "M12 14.5v2",
+  ],
 };
 
 const circles: Partial<Record<IconName, { cx: number; cy: number; r: number }>> = {

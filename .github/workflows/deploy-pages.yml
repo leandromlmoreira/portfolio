@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx tsc --noEmit
+      - run: npm test
       - run: npx expo export --platform web
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
