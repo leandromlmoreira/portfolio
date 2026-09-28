@@ -19,8 +19,11 @@ function Swatches({ items }: { items: Project[] }) {
   const styles = useStyles(createStyles);
   return (
     <View style={styles.swatches}>
-      {items.map((project) => (
-        <View key={project.id} style={[styles.swatch, { backgroundColor: project.accent }]} />
+      {items.map((project, index) => (
+        <View
+          key={project.id}
+          style={[styles.swatch, index > 0 && styles.swatchStacked, { backgroundColor: project.accent }]}
+        />
       ))}
     </View>
   );
@@ -125,12 +128,16 @@ const createStyles = (c: Palette) =>
     },
     swatches: {
       flexDirection: "row",
-      gap: 3,
     },
     swatch: {
-      width: 8,
-      height: 8,
-      borderRadius: 4,
+      width: 11,
+      height: 11,
+      borderRadius: 5.5,
+      borderWidth: 1.5,
+      borderColor: c.surface,
+    },
+    swatchStacked: {
+      marginLeft: -4,
     },
     count: {
       fontFamily: fonts.mono,

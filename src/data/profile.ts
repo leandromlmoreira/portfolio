@@ -12,7 +12,7 @@ export const profile = {
   role: "Full Stack & AI Engineer",
   location: "Iguaba Grande, RJ · Brasil",
   intro:
-    "Construo produtos para web e mobile com TypeScript, React e React Native, e agentes de IA com MCP. Cada projeto aqui está no ar e tem o código aberto.",
+    "Construo produtos para web e mobile com TypeScript, React e React Native, e agentes de IA com MCP. Cada projeto aqui está no ar, e a maioria tem o código aberto.",
   handle: "@leandromlmoreira",
 };
 

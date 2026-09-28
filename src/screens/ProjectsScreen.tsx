@@ -41,7 +41,7 @@ export default function ProjectsScreen({ navigation, route }: Props) {
         <Text style={styles.title} accessibilityRole="header">
           Projetos <Text style={styles.titleItalic}>no ar</Text>
         </Text>
-        <Text style={styles.lead}>Filtre por tecnologia. Cada projeto tem código aberto e uma demo ao vivo.</Text>
+        <Text style={styles.lead}>Filtre por tecnologia. Todos têm uma demo ao vivo, e a maioria tem o código aberto.</Text>
       </FadeIn>
 
       <FadeIn order={1} style={styles.filters}>
